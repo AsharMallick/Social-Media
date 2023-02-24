@@ -4,7 +4,7 @@
 /frontend/.pnp
 /frontend/.pnp.js
 /frontend/coverage
-/frontend/build
+# /frontend/build
 /frontend/.DS_Store
 /frontend/.env.local
 /frontend/.env.development.local
