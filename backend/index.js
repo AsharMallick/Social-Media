@@ -8,7 +8,6 @@ import errorMiddleware from "./middlewares/Error.js";
 import cors from "cors";
 import cloudinary from "cloudinary";
 import path from "path";
-import jwt from 'json'
 dotenv.config({
   path: "./config/config.env",
 });
