@@ -8,6 +8,7 @@ import errorMiddleware from "./middlewares/Error.js";
 import cors from "cors";
 import cloudinary from "cloudinary";
 import path from "path";
+import {fileURLToPath} from 'url'
 dotenv.config({
   path: "./config/config.env",
 });
@@ -32,11 +33,18 @@ app.use(
     extended: true,
   })
 );
+
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
+
 app.use(cookieParser());
 app.use("/api/v1", post);
 app.use("/api/v1", user);
-app.get("*", () => {
-  app.use(express.static(path.resolve(__dirname, "../frontend/build")));
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
 });
 

@@ -8,6 +8,8 @@ import {
 } from "./Reducers/User";
 import { postReducer, myPostReducer } from "./Reducers/Post";
 
+export const server = "http://localhost:8000"
+
 const store = configureStore({
   reducer: {
     user: userReducer,

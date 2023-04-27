@@ -207,7 +207,7 @@ const Post = ({
         onClose={() => setCaptionToggle(!captionToggle)}
       >
         <div className="DialogBox">
-          <Typography variant="h4">Comments</Typography>
+          <Typography variant="h4">Edit Caption</Typography>
           <form className="commentForm" onSubmit={updateCaptionHandler}>
             <input
               type="text"
@@ -217,7 +217,7 @@ const Post = ({
               required
             />
             <Button variant="contained" type="submit">
-              Add Comment
+              Update
             </Button>
           </form>
         </div>

@@ -1,11 +1,12 @@
 import axios from 'axios'
+import {server} from '../store'
 
 export const likePost = (id) => {
     return async (dispatch) => {
         try {
             dispatch({type:"likeRequest"})
 
-            const { data } = await axios.get(`/api/v1/post/${id}`);
+            const { data } = await axios.get(`${server}/api/v1/post/${id}`);
             dispatch({type:"likeSuccess", payload:data.message})
         } catch (error) {
             dispatch({type:"likeFailure", payload:error.response.data.message})
@@ -17,7 +18,7 @@ export const addComment = (comment, id) => {
         try {
             dispatch({type:"addCommentRequest"})
 
-            const { data } = await axios.post(`/api/v1/post/comment/${id}`, {comment}, {headers:{'Content-Type':"application/json"}});
+            const { data } = await axios.post(`${server}/api/v1/post/comment/${id}`, {comment}, {headers:{'Content-Type':"application/json"}});
             dispatch({type:"addCommentSuccess", payload:data.message})
         } catch (error) {
             dispatch({type:"addCommentFailure", payload:error.response.data.message})
@@ -29,7 +30,7 @@ export const deleteComment = (commentId, id) => {
         try {
             dispatch({type:"deleteCommentRequest"})
 
-            const { data } = await axios.delete(`/api/v1/post/comment/${id}`, {data:{commentId}});
+            const { data } = await axios.delete(`${server}/api/v1/post/comment/${id}`, {data:{commentId}});
             dispatch({type:"deleteCommentSuccess", payload:data.message})
         } catch (error) {
             dispatch({type:"deleteCommentFailure", payload:error.response.data.message})
@@ -41,7 +42,7 @@ export const newpost = (caption, image) => {
         try {
             dispatch({type:"newPostRequest"})
 
-            const { data } = await axios.post(`/api/v1/post/upload`, { caption, image }, {
+            const { data } = await axios.post(`${server}/api/v1/post/upload`, { caption, image }, {
                 headers: {
                 "Content-Type":"application/json"
             }});
@@ -56,7 +57,7 @@ export const updatePost = (caption, postId) => {
         try {
             dispatch({type:"updateCaptionRequest"})
 
-            const { data } = await axios.put(`/api/v1/post/${postId}`, { caption }, {
+            const { data } = await axios.put(`${server}/api/v1/post/${postId}`, { caption }, {
                 headers: {
                 "Content-Type":"application/json"
             }});
@@ -71,7 +72,7 @@ export const deletePost = (postId) => {
         try {
             dispatch({type:"deletePostRequest"})
 
-            const { data } = await axios.delete(`/api/v1/post/${postId}`);
+            const { data } = await axios.delete(`${server}/api/v1/post/${postId}`);
             dispatch({type:"updateCaptionSuccess", payload:data.message})
         } catch (error) {
             dispatch({type:"updateCaptionFailure", payload:error.response.data.message})

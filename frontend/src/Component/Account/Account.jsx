@@ -100,7 +100,7 @@ const Account = () => {
                             <Typography variant='h4'>Followers</Typography>
                             {
                                 user.followers && user.followers.length > 0 ? user.followers.map((follower) => (
-                                    <User key={follower._id} userId={follower._id} name={follower.name} avatar={"https://th.bing.com/th/id/R.3a59f13bbe775518072832cb0f308aa0?rik=kGcYyiCWmj4eQg&pid=ImgRaw&r=0"} />
+                                    <User key={follower._id} userId={follower._id} name={follower.name} avatar={follower.avatar} />
                                 )):<Typography>You don't have any follower</Typography>
                             }
                         </div>
